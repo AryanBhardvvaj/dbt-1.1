@@ -1,0 +1,161 @@
+#home_li{
+    background-color: #75cccf;
+    }
+    .wraper{
+        width:86%;
+        margin:auto;
+    }
+    
+    
+    .conBox{
+        line-height: 28px;
+        font-weight: 500;
+        padding: 20px 10px 10px 20px;
+        color: white;
+        display: inline-block;
+        width: 32%;
+        height: 120px;
+        overflow: hidden;
+        margin-top: 10px;
+        margin-left: 10px;
+        border-radius: 5px;
+    }
+    
+                
+    .billDetails{background: rgb(242,17,29);
+    background-image: linear-gradient(162deg, #e10661 0%, #ff0034 55%, #ff0000 100%);
+    background-image:linear-gradient(90deg, #f17967 0%, #e74b6a 55%, #f36781 100%)
+    }
+    
+    .accDetails{
+    
+    background-color: #ddb7f9;
+    background-image: linear-gradient(129deg, #ddb7f9 0%, #47d3cc 50%, #1fd2d9 100%);
+    
+    
+    }
+    
+    .currentDetails{background-color: #7fff60;
+    /*background-image: linear-gradient(125deg, #389921 0%, #0ecb66 100%);*/
+    background-image:linear-gradient(125deg, rgba(34,193,195,1) 12%, rgb(97 187 122) 56%, rgb(241 158 79) 100%)
+    }
+                
+    
+
+    
+    .underline-text {
+        text-decoration: underline lightgray;
+        text-underline-offset: 2px;
+    }
+    
+    
+    
+    @media only screen and (max-width: 920px) {
+        .graph{
+        
+        width:96%;
+        margin:10px auto;
+        }
+        .conBox{
+        display:inline-block;
+        width:90%;
+    
+    }
+    
+    
+    .table-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    
+    
+     }
+    
+     .step2,.step3 ,.step4{ 
+      width: 100%;
+      /* display: inline-block; */
+      vertical-align: top;
+      white-space: normal;
+      /* transition: opacity 0.3s ease; */
+      display: none;
+    }
+    
+    .active {
+      display: block;
+    }
+    
+    
+    /* .step-container {
+      height: 100%; 
+      overflow-y: hidden;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    
+    
+    
+      border: 2px solid #3498db;
+      border-radius: 10px;
+      padding: 20px;
+    
+      background-color: #f5f5f5;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    } */
+    
+    
+    /* For form color change  */
+    @keyframes border-color-change {
+      0% {
+        border-color: #000000;
+      }
+      33% {
+        border-color: #000000;
+      }
+    }
+    
+    .step-container {
+      height: 100%;
+      overflow-y: hidden;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    
+      border: 2px solid #3498db;
+      border-radius: 10px;
+      padding: 20px;
+    
+      background-color: rgba(0,0,0,0.5);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: border-color-change 6s linear infinite;
+    }
+    
+      /* -----------------  for aadhar table border change ---------------- */
+    
+    @keyframes aadhar-border-color-change {
+      0% {
+        border-color: #000000;
+      }
+      50% {
+        border-color: #670081; 
+      }
+    }
+    
+    .aadhartable{
+    
+      border: 2px solid #4e0066;
+      border-radius: 10px;
+      padding: 20px;
+    
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: aadhar-border-color-change 6s linear infinite;
+    
+    }
+    
+    /* --------------------   botton left side animated boy ------------------   */
+
+    .shadow{
+      background: rgba(255, 255, 255, 0.881);
+  }
+  
+  

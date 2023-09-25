@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+<!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'> -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/irj/go/km/docs/bills/HPSEBL/Header/CSS/menu.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.2.2/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+<!-- <script src="js/code.jquery.com_jquery-3.7.0.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+<link rel="stylesheet" href="css/form_style.css">
+<link rel="stylesheet" href="css/jAlert-v3.css"/>
+<link rel="stylesheet" href="css/totalstyle.css"/>
+</head>
+
+<body>
+<?php
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
+?>
+
+        <div class="container-fluid overflow-hidden align-items-center main_container" id="mainFormDiv">
+            <header class="header">
+               <h1 class="header__title">Electricity subsidy Opt-In or Opt-Out Portal</h1>         
+               </header>
+           <div class="multisteps-form"> 
+           <div class="row">
+               <div class="col-lg-12 text-center ml-auto mr-auto">
+               <ul id="progressbar">
+                    <li class="stepActive">General Consumer Details</li>
+                    <li class="" id="cstep2">Electricity Connection Details</li>
+                    <li class="" id="cstep3">Link Aadhar</li>
+                </ul>
+               </div>
+             </div>
+             
+    <div class="row">
+         <div class="loader-div">
+    <img alt="" class="loader-img" src="ajax-loader.gif" style="height: 120px;width: auto;" />
+</div> 
+           <div class="col-lg-12 col-md-12 col-xs-12 m-auto"> 
+           <form class="multisteps-form__form form-horizontal totalform" id="formLC" name="formLC" onsubmit="return false;">
+
+
+           <style>
+
+            .hide{
+                display: none;
+            }
+
+            .show{
+                display: block;
+            }
+            .page_heading{
+                /* background: rgba(250, 210, 245, 0.74); */
+                margin-bottom: 10px;
+                border-radius: 10px;
+                display: inline-flex;
+            }
+
+            .header{
+                background-color: rgba(252, 252, 252, 0);
+                width: max-content;
+                background: rgba(255, 255, 255, 0.785);
+                width: 100vw;
+                border-radius: 10px;
+            }
+
+            .header__title{
+            /* text-decoration: overline underline; */
+            text-decoration-color: rgb(255, 255, 255);
+            width: max-content;
+            display: flex;
+            justify-content: center;
+            margin-left: 30px;
+            }
+
+            .main_container{
+                background: url('./bg.png');
+                background-size: cover;
+                background-position: center; 
+                background-repeat: no-repeat;
+                position: static;
+            }
+
+            .entire_form_bg{
+                /* background: rgba(255, 255, 255, 0.498); */
+                background: rgba(255, 251, 255, 0.884);
+            }
+
+
+
+            .multisteps-form__input.form-control {
+                background: white;
+            }
+
+            .multisteps-form__input.form-control:focus {
+                box-shadow: 0 0 10px 0 rgb(178, 2, 197);
+                /* box-shadow: 0 0 10px 0 rgb(230, 179, 12); */
+
+            }
+
+            #gohpSubsidyConsumerId{
+                background:white;
+                box-shadow: 0 0 10px 0 rgb(178, 2, 197);
+
+            }
+            #gohpSubsidyConsumerId:focus{
+                box-shadow: 0 0 10px 0 rgb(178, 2, 197);
+
+            }
+            
+
+            .add_id {
+            color: white;
+            border: 1px double black;
+            border-radius: 20px;
+            padding: 5px 5px;
+            display: inline-block;
+            font-size: 15px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            -webkit-transition: ease-out 0.5s;
+            -moz-transition: ease-out 0.5s;
+            transition: ease-out 0.5s;
+            box-shadow: black;
+            background: rgb(111, 35, 205);
+            margin: 20px;
+            color: white;
+            }
+
+            .add_id:hover {
+                background-color: white;
+                color: black;
+                --t: 0.5s 0.1s;
+                box-shadow: inset 400px 0 0 0 rgb(71, 214, 249);
+            }
+
+            #outer {
+            width: 364px;
+            margin: 50px auto 0 auto;
+            text-align: center;
+            }
+
+                            
+            .next_button  {
+                --border: 5px;   
+                --slant: 0.7em;   
+                --color: rgb(155, 95, 245);
+    
+    
+                font-size: 20px;
+                padding: 0.4em 1.2em;
+                border-radius: 5px;
+                border-color: rgb(255, 255, 255);
+                cursor: pointer;
+                font-weight: bold;
+                margin-right: 50px;
+                color: var(--color);
+                background:
+                    linear-gradient(to bottom left, var(--color) 50%, #0000 50.1%) top right,
+                    linear-gradient(to top right, var(--color) 50%, #0000 50.1%) bottom left;
+                background-size: calc(var(--slant) + 1.3 * var(--border)) calc(var(--slant) + 1.3 * var(--border));
+                background-repeat: no-repeat;
+    
+                clip-path:
+                    polygon(0 0, calc(100% - var(--slant)) 0, 100% var(--slant),
+                            100% 100%, var(--slant) 100%, 0 calc(100% - var(--slant))
+                            );
+                transition: color var(--t, 0.3s), background-size 0.3s;
+    
+                background-size: 100% 100%;
+                color: white;
+                --t: 0.5s 0.1s;
+                box-shadow:
+                    red 10px inset var(--s, #0000),
+                    yellow var(--border) inset var(--color),
+                    0 0 10px 5px rgba(55, 232, 252, 0.7); 
+                    
+                }
+    
+                .next_button:focus-visible {
+                outline-offset: calc(-1*var(--border));
+                outline: var(--border) solid #000c;
+                clip-path: none;
+                background-size: 0 0;
+                }
+    
+                .next_button:hover{
+                background-color: white;
+                color: black;
+                --t: 0.5s 0.1s;
+                box-shadow: inset 400px 0 0 0 rgb(71, 214, 249);
+    
+                }
+                .next_button:active {
+                background-size: 100% 100%;
+                color: white;
+                --t: 0.5s 0.1s;
+                /* Add glow effect by modifying box-shadow */
+                box-shadow:
+                    red 10px inset var(--s, #0000),
+                    yellow var(--border) inset var(--color),
+                    0 0 10px 5px rgba(55, 232, 252, 0.7);
+                }
+    
+                .next_button:active {
+                --s: #0005;
+                transition: none;
+                }
+
+
+                    .infotable{
+                        border-color: black;
+                    }
+
+                    .underline-text{
+                        text-decoration:solid;
+                    }
+
+
+                    form{
+                        margin-left: -60px;
+                        margin-right: 40px;
+                    }
+
+
+
+                    input[type="radio"]:checked::before {
+                    border-color: rgb(111, 35, 205);
+                    background-color: rgb(111, 35, 205);
+                    content: ''; 
+                    width: 10px; 
+                    height: 10px; 
+                    border-radius: 50%; 
+                    display: inline-block; 
+                    margin-bottom: 5px;
+                    margin-left: 1.5px;
+                    }
+
+                    .page_heading{
+                        /* background: rgba(212, 162, 236, 0.285); */
+                        display: block;
+                        justify-content: left;
+                        border-radius: 0px;
+                    }
+
+                    .radio_buttons{
+                        color: black;
+                        font-weight: bolder;
+                        display: flex;
+                        justify-content: space-between;
+
+                    }
+
+
+
+
+
+
+
+           </style>
+
+
+
+
+
+
+
+
+
+
+
+    <div class=" shadow p-4 step-container entire_form_bg">
+
+             
+                    <!-- ---------------------------- step 1 start ------------------------------------- -->
+
+
+
+            <div id="step1" class="step1 active">
+
+                        <div class="page_heading">
+                        <h2 class="multisteps-form__title mt-4 pr-4 pl-4">Enter Consumer ID on which GoHP Subsidy to be availed</h2>
+                        <br>
+                    </div>
+                    <hr>
+                    <br>
+
+                    <div class="">
+
+                          <!-- Single Multiple Radio Buttons -->
+
+                          <div id="electricityConnectionType">
+
+                            <h5 class="multisteps-form__sub-title underline-text">Electricity Connection Type</h5>
+                            <br>
+                            <div class="row radio_buttons">
+                                <div class="col-lg-6 radio-button-container">
+                                    <input type="radio" id="singleConnection" name="connectionType" value="single" checked>
+                                    <label for="singleConnection">Single Electricity Connection</label>
+                                </div>
+                                <div class="col-lg-6 radio-button-container">
+                                    <input type="radio" id="multipleConnections" name="connectionType" value="multiple">
+                                    <label for="multipleConnections">Multiple Electricity Connections</label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <br><br><br>
+
+                        <!-- Section for Consumer Information Table -->
+
+                        <style>
+                            #consumerTable th:nth-child(8), #consumerTable td:nth-child(8) {
+                                display: none;
+                            }
+                        </style>
+
+                        <div id="consumerInformation">
+                            <h5 class="multisteps-form__sub-title underline-text">Consumer Information</h5>
+                            <br>
+                            <div class="table-container table-responsive">
+                                
+                            <form id="postForm">
+
+    <table class="table table-bordered infotable" id="consumerTable">
+            <thead>
+                <tr>
+                    <th>Consumer ID</th>
+                    <th>Consumer Name</th>
+                    <th>Tariff Category</th>
+                    <th>Connected Load</th>
+                    <th>Mobile No.</th>
+                    <th>Address</th>
+                    <th>ESD Name</th>
+                    <th>Remove ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- <td><input id="consumerId" class="multisteps-form__input form-control" type="text" consumerId="consumerId"></td> -->
+                    <td><input type="number" id="consumerId" class="multisteps-form__input form-control" consumerId="consumerId" pattern="[1-9][0-9]{12}" minlength="12" required placeholder="100000000108"/></td>
+                    <td><input class="multisteps-form__input form-control" type="text" consumerId="consumername" placeholder="Sample consumerId" disabled></td>
+                    <td><input class="multisteps-form__input form-control" type="text" consumerId="tariffCategory" placeholder="Category" disabled></td>
+                    <td><input class="multisteps-form__input form-control" type="text" consumerId="connectedLoad" placeholder="Connected load" disabled></td>
+                    <td><input class="multisteps-form__input form-control" type="text" consumerId="mobileNo" placeholder="90000000001" disabled></td>
+                    <td><input class="multisteps-form__input form-control" type="text" consumerId="address" placeholder="new shimla" disabled></td>
+                    <td><input class="multisteps-form__input form-control" type="text" consumerId="esdname" placeholder="Khalini" disabled ></td>
+                    <input type="hidden" id="apiResponse" consumerId="apiResponse">
+                </tr>
+            </tbody>
+        </table>
+
+
+        <button class="add_id"  id="viewSingleDetailsBtn" style="display: none;" onclick="validateConsumerId()">Add This ID</button>
+        <button class="add_id" id="addNewRowBtn" style="display: none;" onclick="validateConsumerId()"> Add This ID </button>
+
+
+
+    </form>
+
+
+<div id="errorDiv" class="errorDiv" >
+    <p>Please enter a valid consumer ID <br>A consumer ID: <br>1. Must be 12 digit long<br>2. Must not start with 0<br>3. Entered consumer id should be only numbers</p>
+    <button id="resetButton" class="resetButton" >OK</button>
+</div>
+
+<style>
+    .errorDiv{
+
+        display: none; 
+        position: absolute; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        background-color: #ffcccc; 
+        padding: 10px;
+    }
+    .resetButton{
+        background-color: white;
+        color: black;
+        border: 2px solid rgb(155, 95, 245);
+    }
+</style>
+
+<script>
+    function validateConsumerId() {
+        const consumerIdInput = document.getElementById('consumerId');
+        const consumerIdValue = consumerIdInput.value;
+
+        if (/^[1-9][0-9]{11}$/.test(consumerIdValue)) {
+
+            step1nexttext();
+            step1nextbuttonactive();
+
+        } else {
+            const errorDiv = document.getElementById('errorDiv');
+            errorDiv.style.display = 'block';
+
+            consumerIdInput.value = '';
+
+            const resetButton = document.getElementById('resetButton');
+            resetButton.addEventListener('click', function () {
+                errorDiv.style.display = 'none';
+            });
+        }
+    }
+    function step1nextbuttonactive(){
+        const nxtstepbtn = document.getElementById('next_btn_1_to_2');
+        nxtstepbtn.classList.remove('hide');
+        nxtstepbtn.classList.add('show');
+
+    }
+</script>
+
+
+<!-- -----------------------------------  api call ------------------------ -->
+    <script>
+        document.getElementById("viewSingleDetailsBtn").addEventListener("click", function () {
+            var consumerId = document.getElementById("consumerId").value;
+            var xhr = new XMLHttpRequest();
+
+            xhr.open("POST", "newreadyapi.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = xhr.responseText;
+                    // console.log("Response :", response);
+                }
+            };
+
+            var data = "consumerId=" + encodeURIComponent(consumerId);
+
+            xhr.send(data);
+        });
+
+        document.getElementById("addNewRowBtn").addEventListener("click", function () {
+            var consumerId = document.getElementById("consumerId").value;
+            var xhr = new XMLHttpRequest();
+
+            xhr.open("POST", "newreadyapi.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = xhr.responseText;
+                    console.log("Response :", response);
+                }
+            };
+
+            var data = "consumerId=" + encodeURIComponent(consumerId);
+
+            xhr.send(data);
+        });
+    </script>
+                                
+
+
+
+                            </div>
+                        </div>
+
+
+
+
+                        <script>
+                            //  ------------------------------ costome info table ---------------------
+
+                            $(document).ready(function () {
+
+                        // +button
+                        function toggleAddButtonVisibility() {
+                            var isChecked = $("#multipleConnections").prop("checked");
+                            if (isChecked) {
+                                $("#viewSingleDetailsBtn").hide();
+                                $("#addNewRowBtn").show();
+                                $("#consumerTable tbody tr:gt(0)").show();
+                                console.log('multiple connection selected');
+                            } else {
+
+                                $("#viewSingleDetailsBtn").show();
+                                $("#addNewRowBtn").hide();
+                                $("#consumerTable tbody tr:gt(0)").hide();
+                                console.log('single connection selected');
+
+                            }
+                        }
+
+                        toggleAddButtonVisibility();
+
+                        $("#electricityConnectionType input[type='radio']").change(function () {
+                            toggleAddButtonVisibility();
+                        });
+
+                        $("#addNewRowBtn").click(function () {
+
+                            console.log('new row added');
+
+                            var newRow = $("<tr>");
+                            var cols = "";
+
+                            cols += '<td><input class="multisteps-form__input form-control" type="text" name="consumerId"></td>';
+                            cols += '<td><input class="multisteps-form__input form-control" type="text" name="consumerName" placeholder="Sample name" disabled ></td>';
+                            cols += '<td><input class="multisteps-form__input form-control" type="text" name="tariffCategory" placeholder="Domestic" disabled></td>';
+                            cols += '<td><input class="multisteps-form__input form-control" type="text" name="connectedLoad" placeholder="conected load" disabled></td>';
+                            cols += '<td><input class="multisteps-form__input form-control" type="text" name="mobileNo" placeholder="9000000001" disabled></td>';
+                            cols += '<td><input class="multisteps-form__input form-control" type="text" name="address" placeholder="New shimla" disabled></td>';
+                            cols += '<td><input class="multisteps-form__input form-control" type="text" name="esdName" placeholder="Khalini" disabled></td>';
+
+                            cols += '<td><button class="btn btn-danger remove-row">-</button></td>';
+                            newRow.append(cols);
+                            $("#consumerTable tbody").append(newRow);
+                        //remove id show 
+                            $("#consumerTable th:nth-child(8), #consumerTable td:nth-child(8)").show();
+                        });
+
+                        // - button
+                        $("#consumerTable").on("click", ".remove-row", function () {
+                            $(this).closest("tr").remove();
+
+                            if ($("#consumerTable tbody tr").length === 0) {
+                                $("#consumerTable th:nth-child(8), #consumerTable td:nth-child(8)").hide();
+                            }
+
+                            console.log('a row was deleted');
+                        });
+                        });
+
+                        </script>
+
+
+
+
+
+
+
+                        <br><br>
+
+                        <!-- GoHP Subsidy -->
+                        <div id="gohpSubsidyField" style="display: none;">
+                        <div class="row pb-4">
+                            <div class="col-lg-6">
+                                <label for="gohpSubsidyConsumerId"><h5 class="underline-text">Selct Consumer ID for GoHP Subsidy:</h5></label>
+                            </div>
+                            <div class="col-lg-6">
+                                <select class="multisteps-form__input form-select" id="gohpSubsidyConsumerId" name="gohpSubsidyConsumerId">
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- for GoHP subsidy multiple field -->
+                        <script>
+                        $(document).ready(function () {
+                            // hide at first
+                            $("#gohpSubsidyField").hide();
+
+                            // enable at radio button
+                            $('input[type=radio][name=connectionType]').change(function() {
+                                if (this.value === 'multiple') {
+                                    $("#gohpSubsidyField").show();
+                                } else {
+                                    $("#gohpSubsidyField").hide();
+                                }
+                            });
+                        });
+
+                        console.log('id was selected from the dropdown');
+                        </script>
+
+                        <!-- ---------------------  consumer id appear in the dropdown ------------------- -->
+
+                        <script>
+                            $(document).ready(function () {
+                                // Function to populate the dropdown with unique consumerIds
+                                function populateDropdown() {
+                                    var uniqueConsumerIds = [];
+                                    $("#consumerTable tbody tr").each(function () {
+                                        var consumerId = $(this).find("input[name='consumerId']").val();
+                                        if (consumerId && uniqueConsumerIds.indexOf(consumerId) === -1) {
+                                            uniqueConsumerIds.push(consumerId);
+                                        }
+                                    });
+
+                                    // Clear existing options and add new options
+                                    var $dropdown = $("#gohpSubsidyConsumerId");
+                                    $dropdown.empty();
+                                    $.each(uniqueConsumerIds, function (index, consumerId) {
+                                        $dropdown.append($("<option />").val(consumerId).text(consumerId));
+                                    });
+                                }
+
+                                // Call the populateDropdown function when the page loads and when a new row is added
+                                populateDropdown();
+
+                                // Add a new row to the table
+                                $("#addNewRowBtn").click(function () {
+                                    populateDropdown();
+                                });
+                            });
+                        </script>
+
+
+ <!-- --------------------------  selected consumer id for multiple ------------------  -->
+
+
+                                        <script>
+
+                                        $(document).ready(function () {
+
+
+                                            // for single 
+                                            document.getElementById('viewSingleDetailsBtn').addEventListener('click', function() {
+                                            // Get input values from the current row
+                                            var consumerId = document.querySelector('#consumerTable tbody tr input[name="consumerId"]').value;
+                                            var consumerName = document.querySelector('#consumerTable tbody tr input[name="consumerName"]').value;
+                                            var tariffCategory = document.querySelector('#consumerTable tbody tr input[name="tariffCategory"]').value;
+                                            var connectedLoad = document.querySelector('#consumerTable tbody tr input[name="connectedLoad"]').value;
+                                            var mobileNo = document.querySelector('#consumerTable tbody tr input[name="mobileNo"]').value;
+                                            var address = document.querySelector('#consumerTable tbody tr input[name="address"]').value;
+                                            var esdName = document.querySelector('#consumerTable tbody tr input[name="esdName"]').value;
+
+                                            // Log the customer details
+                                            console.log('consumer details for single  : ');
+                                            console.log('Consumer ID: ' + consumerId);
+                                            console.log('Consumer Name: ' + consumerName);
+                                            console.log('Tariff Category: ' + tariffCategory);
+                                            console.log('Connected Load: ' + connectedLoad);
+                                            console.log('Mobile No.: ' + mobileNo);
+                                            console.log('Address: ' + address);
+                                            console.log('ESD Name: ' + esdName);
+                                        });
+
+
+    //for multiple
+                                            // coustomer id should be unique
+
+                                            function populateDropdown() {
+                                                var uniqueConsumerIds = [];
+                                                $("#consumerTable tbody tr").each(function () {
+                                                    var consumerId = $(this).find("input[name='consumerId']").val();
+                                                    if (consumerId && uniqueConsumerIds.indexOf(consumerId) === -1) {
+                                                        uniqueConsumerIds.push(consumerId);
+                                                    }
+                                                });
+
+                                                // Clear existing options and add new options
+                                                var $dropdown = $("#gohpSubsidyConsumerId");
+                                                $dropdown.empty();
+                                                $.each(uniqueConsumerIds, function (index, consumerId) {
+                                                    $dropdown.append($("<option />").val(consumerId).text(consumerId));
+                                                });
+                                            }
+
+                                            populateDropdown();
+
+                                            $("#addNewRowBtn").click(function () {
+                                                populateDropdown();
+                                            });
+
+                                            // event listner
+                                            $("#gohpSubsidyConsumerId").change(function () {
+                                                var selectedConsumerId = $(this).val();
+                                                if (selectedConsumerId) {
+                                                    // select the row 
+                                                    var $selectedRow = $("#consumerTable tbody tr").filter(function () {
+                                                        return $(this).find("input[name='consumerId']").val() === selectedConsumerId;
+                                                    });
+
+                                                    if ($selectedRow.length > 0) {
+                                                        var consumerName = $selectedRow.find("input[name='consumerName']").val() || "N/A";
+                                                        var tariffCategory = $selectedRow.find("input[name='tariffCategory']").val() || "N/A";
+                                                        var connectedLoad = $selectedRow.find("input[name='connectedLoad']").val() || "N/A";
+                                                        var mobileNo = $selectedRow.find("input[name='mobileNo']").val() || "N/A";
+                                                        var address = $selectedRow.find("input[name='address']").val() || "N/A";
+                                                        var esdName = $selectedRow.find("input[name='esdName']").val() || "N/A";
+
+                                                        // Log the details to the console
+                                                        console.log('consumer details for multiple ids');
+                                                        console.log("Consumer ID: " + selectedConsumerId);
+                                                        console.log("Consumer Name: " + consumerName);
+                                                        console.log("Tariff Category: " + tariffCategory);
+                                                        console.log("Connected Load: " + connectedLoad);
+                                                        console.log("Mobile No.: " + mobileNo);
+                                                        console.log("Address: " + address);
+                                                        console.log("ESD Name: " + esdName);
+                                                    } else {
+                                                        console.log("Consumer ID: " + selectedConsumerId);
+                                                        console.log("Consumer not found in the table.");
+                                                    }
+                                                }
+                                            });
+                                        });
+
+                                        </script>
+
+
+
+<!-- ----------------------------   select coustomer id for single ----------------------- -->
+
+
+
+                        <!-- next button -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                   <button id="next_btn_1_to_2" class="scroll-button js-btn-first next_button hide" onclick="scrollToNextstep2()">Next</button>
+
+                    </div>
+                
+                    </div>
+            </div>
+
+         <!-- ---------------------- next step -----------------  -->
+         <script>
+                                var nextstepto2 = document.getElementById('next_btn_1_to_2');
+                                nextstepto2.addEventListener('click', function() {
+                                    console.log('moved to 2nd step');
+                                });
+        </script>
+
+
+
+                    <!-- -----------------------step 2 start from here---------------------------- -->
+
+
+
+        <div id="step2" class="step2">
+
+
+
+
+                        <div class="page_heading">
+                            <h2 class="multisteps-form__title mt-4 pr-4 pl-4">Aadhaar Information</h2>
+                            <br>
+                        </div>
+                        <hr>
+
+<style>
+ 
+</style>
+
+                        <div class="">
+                            <!-- Aadhaar Information Fields -->
+                            <div id="aadhaarInformation">
+                                <div class="row pb-4">
+                                    <div class="col-lg-6">
+                                        <label for="aadhaarLabel">Enter the AADHAAR:</label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input class="multisteps-form__input form-control" type="text" id="aadhaarInput" name="aadhaarInput" placeholder="Enter AADHAAR No. Here" oninput="addSpaces()" maxlength="14">
+                                    </div>
+                                </div>
+                                <div class="row pb-4">
+                                    <div class="col-lg-6">
+                                        <label for="otpLabel">Enter OTP for Consent to Link AADHAAR:</label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input class="multisteps-form__input form-control" type="text" id="otpInput" name="otpInput" placeholder="Enter OTP Here"  required>
+                                    </div>
+                                </div>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="button" id="aadhar_otp_btn" class="scroll-button add_id ml-auto js-btn-first" onclick="validateAadhaarAndSendOTP()" >Send OTP</button>
+                                </div>
+                                
+                            </div>
+
+                            <!-- -------------------- send otp button ---------------------  -->
+
+                            <script>
+                                var aadharOtpBtn = document.getElementById('aadhar_otp_btn');
+                                aadharOtpBtn.addEventListener('click', function() {
+                                    console.log('Send OTP btn clicked');
+                                });
+
+                                    function addSpaces() {
+                                        let inputElement = document.getElementById("aadhaarInput");
+                                        let inputValue = inputElement.value.replace(/\s+/g, ''); 
+                                        let formattedValue = '';
+                            
+                                        for (let i = 0; i < inputValue.length; i++) {
+                                            if (i > 0 && i % 4 === 0) {
+                                                formattedValue += ' '; 
+                                            }
+                                            formattedValue += inputValue[i];
+                                        }
+                            
+                                        inputElement.value = formattedValue;
+                                    }
+
+                            </script>
+
+                            <!-- Consent Checkbox -->
+                            <div class="row pb-4">
+                                <div class="col-lg-12">
+                                    <label>
+                                        <input type="checkbox" id="consentCheckbox" name="consentCheckbox">
+                                        I have read terms and conditions and I consent to share my Aadhar details with HPSEBL.
+                                        <script>
+                                            console.log('consumer consent is given');
+                                        </script>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Button to Move to the Next Step -->
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                   <button id="next_btn_2_to_3"  class="scroll-button next_button ml-auto js-btn-first hide" onclick="scrollToNextstep3()">Next</button>
+                                
+                            </div>
+                        </div>
+
+        </div>
+
+
+
+
+        <!-- ------------------------ validate aadhaar ------------------------  -->
+
+
+        <div id="aadhaarError" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #ffcccc; padding: 10px;">
+    <p>Invalid Aadhaar Number. Please enter a valid Aadhaar Number.</p>
+    <button id="okButton" onclick="hideAadhaarError()">OK</button>
+</div>
+
+<script>
+    function validateAadhaarAndSendOTP() {
+        const aadhaarInput = document.getElementById('aadhaarInput');
+        const aadhaarValue = aadhaarInput.value;
+        const aadhaarPattern = /^.{14}$/;
+
+
+        if (aadhaarPattern.test(aadhaarValue)) {
+            step2otptext();
+
+            const nextbtn = document.getElementById('next_btn_2_to_3');
+            nextbtn.classList.remove('hide');
+            nextbtn.classList.add('show');
+        } else {
+            const aadhaarError = document.getElementById('aadhaarError');
+            aadhaarError.style.display = 'block';
+        }
+    }
+
+    function hideAadhaarError() {
+        const aadhaarError = document.getElementById('aadhaarError');
+        aadhaarError.style.display = 'none';
+    }
+</script>
+
+         <!-- ---------------------- next step -----------------  -->
+         <script>
+                                var nextstepto3 = document.getElementById('next_btn_2_to_3');
+                                nextstepto3.addEventListener('click', function() {
+                                    console.log('moved to 3rd step');
+                                });
+        </script>
+
+
+
+
+
+        <!-- ------------------------------------ step3 ----------- ------------------------- -->
+
+
+        <div class="step3">
+
+
+
+        <div class="page_heading">
+                            <h2 class="multisteps-form__title mt-4 pr-4 pl-4">Demographic Details as per AADHAAR</h2>
+                            <br>
+                        </div>
+                        <hr>
+
+                        <br><br><br>
+
+                        <table class="table table-bordered aadhartable" id="consumer_aadhar_info_display" border="3">
+                                <tbody>
+                                    <tr>
+                                        <td><h5>Name :</h5></td>
+                                        <td><input class="multisteps-form__input form-control" type="text" name="consumerName" id="consumerName" readonly placeholder="Sunil Kumar"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Gender :</h5></td>
+                                        <td><input class="multisteps-form__input form-control" type="text" name="gender" readonly placeholder="Male"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Address :</h5></td>
+                                        <td><input class="multisteps-form__input form-control" type="text" name="address" readonly placeholder="Arki" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Date Of Birth :</h5></td>
+                                        <td><input class="multisteps-form__input form-control" type="text" name="dateOfBirth" readonly placeholder="23/04/1982"/></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+
+
+
+
+
+                        <!-- ------------------------------- fill table ----------------------   -->
+
+
+
+                      
+
+
+                        <!-- <script>
+                            var response = xhr.responseText;
+                                const apiResponse = response;
+
+                                console.log(response);
+
+                                function populateTable(apiResponse) {
+                                    const table = document.getElementById('consumer_aadhar_info_display');
+                                    
+                                    table.getElementById('input[name="consumerName"]').value = apiResponse.consumerName;
+                                    table.querySelector('input[name="gender"]').value = apiResponse.gender;
+                                    table.querySelector('input[name="address"]').value = apiResponse.address;
+                                    table.querySelector('input[name="dateOfBirth"]').value = apiResponse.dateOfBirth;
+                                }
+                                populateTable(apiResponse);
+                        </script> -->
+                            <script>
+                                    document.getElementById("next_btn_2_to_3").addEventListener("click", function () {
+                                        var consumerId = document.getElementById("consumerId").value;
+                                        var xhr = new XMLHttpRequest();
+
+                                        xhr.open("POST", "newreadyapi.php", true);
+                                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                                        xhr.onreadystatechange = function () {
+                                            if (xhr.readyState === 4 && xhr.status === 200) {
+                                                var response = xhr.responseText;
+                                                console.log("Response :", response);
+
+                                                const apiresponse = response;
+
+                                                const keyValuePairs = JSON.parse(apiresponse);
+
+                                                console.log(keyValuePairs[0]);
+
+                                                const cname = keyValuePairs.consumerName;
+                                                console.log(cname);
+
+
+                                                const dataArray = JSON.parse(apiresponse);
+
+                                                const firstObject = dataArray[0]; 
+
+                                                
+                                                
+
+
+                                                function populateTable(apiresponse) {
+
+                                                    const table = document.getElementById('consumer_aadhar_info_display');
+
+
+                                                    const consumerName = firstObject.consumerName;
+                                                    const tariffCategory = firstObject.tariffCategory;
+                                                    const connectedLoad = firstObject.conectedLoad; 
+                                                    const mobileNo = firstObject.mobileNo;
+                                                    const address = firstObject.address;
+                                                    const esdName = firstObject.esdName;
+
+                                                    console.log('name - ',consumerName); 
+                                                    console.log('tarriff category - ',tariffCategory);
+                                                    console.log('connected load - ',connectedLoad); 
+                                                    console.log('moblie number - ',mobileNo);
+                                                    console.log('address - ',address);
+                                                    console.log('ESD name - ',esdName);
+                                                    
+                                                    table.querySelector('input[name="consumerName"]').value = consumerName;
+;
+                                                    // table.querySelector('input[name="gender"]').value = apiResponse.gender;
+                                                    table.querySelector('input[name="address"]').value = address;
+                                                    // table.querySelector('input[name="dateOfBirth"]').value = apiResponse.dateOfBirth;
+
+
+
+                                                    const undertaking = document.getElementById('uploadForm');
+                                                    undertaking.querySelector('input[name="consumerName"]').value = consumerName;
+                                                    undertaking.querySelector('input[name="caddress"]').value = address;
+                                                    undertaking.querySelector('input[name="esdname"]').value = esdName;
+                                                    undertaking.querySelector('input[name="cid"]').value = consumerId;
+                                                    undertaking.querySelector('input[name="cnametable"]').value = consumerName;
+                                                    undertaking.querySelector('input[name="cidtable"]').value = consumerId;
+
+                                                    
+                                                }
+                                                populateTable(apiresponse);
+                                            }
+                                        };
+
+                                        var data = "consumerId=" + encodeURIComponent(consumerId);
+
+                                        xhr.send(data);
+                                    });
+
+                        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+                  <button id="next_btn_3_to_4" class="scroll-button next_button ml-auto js-btn-first"  onclick="scrollToNextStep4()">Next</button>
+                </div>
+
+
+        </div>
+
+        <div class="step4" id="step4">
+        <div class="page_heading">
+                            <h2 class="multisteps-form__title mt-4 pr-4 pl-4">Undertaking</h2>
+                            <br>
+                        </div>
+                        <hr>
+
+                        <br><br><br>
+
+
+                        <div class="undertaking_form overflow-auto border">
+
+
+                        <form action="upload.php" id="uploadForm" enctype="multipart/form-data">
+                       
+                            <a>
+
+                            I/We .......... <input type="text" class="undertakinginput" id="undertakinginput" name="consumerName" readonly placeholder="Sunil Kumar">.......... Son /Daughter of 
+…………………<input type="text" class="undertakinginput" name="customer_father_name" readonly placeholder="Shayam Kumar">……………………. Resident of ……………… <input type="text" class="undertakinginput" name="caddress" readonly placeholder="Arki">  ……………………( 
+hereinafter referred to as “Applicant”, which terms shall mean and include 
+executors, administrators, heirs, successors and assigns), do hereby swear and 
+declare as under:- <br>
+THAT the Applicant is a lawful owner/occupant of premises at …… 
+………………<input type="text" class="undertakinginput" name="esdname" readonly placeholder="Arki">…………………( hereinafter referred to as “Premises”). <br>
+THAT the Applicant is availing Electricity connection Consumer ID 
+___<input type="text" class="undertakinginput" name="cid" readonly placeholder="10000000000108"> _______in the premises from Himachal Pradesh State Electricity Board Ltd. 
+(HPSEB Ltd.) (hereinafter referred to as “ The Licensee”) and has applied for 
+availing Govt Subsidy on consumption of electricity. <br>
+THAT I, the Applicant hereby agree and undertake/declare:<br><br>
+<ol>
+<li> That I have intimated/ disclosed all the electricity connections in my name 
+and my legal heir’s name in the State and have consented for subsidy on 
+only one electricity connection to be credited directly to my bank account as 
+per Govt Policy.</li> <br>
+<li> That in case the undertaking given is proved false and one or more 
+connections are discovered in my and my legal heir’s name, the subsidy 
+shall be stopped and subsidy already availed shall be liable to be recovered 
+with interest.</li><br>
+<li>THAT I, Applicant shall be held responsible, if the contents of the undertaking 
+are proved false at any stage and the I/We indemnify HPSEBL of any 
+consequences arising out of release of electrical connection to my premises.
+</li>
+</ol>
+<br><br>
+<table class="table">
+    <tr>
+        <thead class="thead-dark">Disclosed Electrical Connections Details</thead>
+    </tr>
+    <tr>
+        <th>Sr. No.</th>
+        <th>Customer ID</th>
+        <th>In the name of</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><input type="text" class="undertakinginput" name="cidtable" readonly placeholder="10000000000108"></td>
+        <td><input type="text" class="undertakinginput" name="cnametable" readonly placeholder="Sunil Kumar"></td>
+    </tr>
+</table>
+<br><br><br>
+
+<!-- <label for="file">Choose a file to upload:</label><br><br>
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="submit" value="Upload File"> -->
+        
+        
+        
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+        <label for="resume">Choose a PDF file:</label>
+        <input type="file" name="resume" id="resume" accept=".pdf" required>
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+
+    <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $targetDir = "uploads/"; // Create a directory named 'uploads' to store uploaded resumes
+    $targetFile = $targetDir . basename($_FILES["resume"]["name"]);
+    $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+    // Check if the uploaded file is a PDF
+    if ($fileType != "pdf") {
+        echo "Only PDF files are allowed.";
+    } else {
+        // Move the uploaded file to the 'uploads' directory
+        if (move_uploaded_file($_FILES["resume"]["tmp_name"], $targetFile)) {
+            echo "Resume uploaded successfully!";
+        } else {
+            echo "Error uploading the file.";
+        }
+    }
+}
+?>
+<br><br>
+
+
+SELF VERIFICATION:<br><br>
+I/We, the above named Applicant(s) do hereby verify that the content of 
+undertaking are true to the best of my knowledge and nothing material has 
+been concealed therefrom.<br><br>
+Verified on ………… $date ………..
+<br><br>
+
+
+                            </a>
+                        </form>
+
+
+
+                        <!-- ---------------------------------  signature on form upload --------------- -->
+
+        
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <button class="add_id">
+
+                    <a href="./undertaking_hpsebl_gohp_subsidy.pdf" download="undertaking_for_subsidy_hpsebl.pdf">Download PDF</a>
+                </button>
+
+
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                   <button id="submit_button" class="scroll-button js-btn-first next_button" onclick="submitFrom()">Submit</button>
+
+                    </div>
+
+
+
+        </div>
+        </div>
+
+
+
+
+
+
+        <style>
+
+#uploadForm{
+    margin-left: 10px;
+}
+
+.undertaking_form{
+    background-color: white;
+    font-family: -webkit-body;
+    height: 200px;
+}
+        </style>
+
+
+
+<!-- ----------------------   pdf file validation ------------------ -->
+
+
+
+                        <!-- <script>
+        document.getElementById('uploadForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            const fileInput = document.querySelector('input[type="file"]');
+            const pdfFile = fileInput.files[0];
+            
+            if (pdfFile) {
+                const verificationResult = document.getElementById('verificationResult');
+                verificationResult.innerHTML = `Verifying PDF file: ${pdfFile.name}`;
+            } else {
+                alert('Please select a PDF file.');
+            }
+        });
+
+    </> -->
+
+
+
+                </div>
+    </div>
+
+                </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- ---------------------- submit button -----------------  -->
+                <script>
+                                var submitaadharreq = document.getElementById('next_btn_3_to_4');
+                                submitaadharreq.addEventListener('click', function() {
+                                    console.log('Submit Request was clicked');
+                                });
+                </script>
+
+
+
+        </div>
+
+
+    </div>
+                        </div>
+                    </div>
+
+
+                        <!-- -------------------------------- button function script ------------------ -->
+ 
+ 
+    <script>
+
+        function scrollToNextstep2() {
+            const currentStep = document.querySelector('.step2');
+            currentStep.classList.add('active');
+            currentStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            document.getElementById('next_btn_1_to_2').style.display='none';
+
+            const currtext = document.getElementById('page1_text_2');
+            currtext.classList.remove('active_text');
+            currtext.classList.add('hide-text');
+
+            const nexttext = document.getElementById('page2_text');
+            nexttext.classList.remove('hide-text');
+            nexttext.classList.add('active_text');
+
+            const topindicator = document.getElementById('cstep2');
+            topindicator.classList.add('stepActive');
+        }
+
+
+        function step1nexttext(){
+            
+            const currtext = document.getElementById('page1_text');
+            currtext.classList.remove('active_text');
+            currtext.classList.add('hide-text');
+
+            const nexttext = document.getElementById('page1_text_2');
+            nexttext.classList.remove('hide-text');
+            nexttext.classList.add('active_text');
+        }
+        
+        function step2otptext(){
+            
+            const currtext = document.getElementById('page2_text');
+            currtext.classList.remove('active_text');
+            currtext.classList.add('hide-text');
+
+            const nexttext = document.getElementById('page2_text_1');
+            nexttext.classList.remove('hide-text');
+            nexttext.classList.add('active_text');
+
+
+
+
+            
+        }
+
+        function scrollToNextstep3() {
+            const currentStep = document.querySelector('.step3');
+            currentStep.classList.add('active');
+            currentStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            document.getElementById('next_btn_2_to_3').style.display='none';
+            document.getElementById('aadhar_otp_btn').style.display='none';
+
+
+            const currtext = document.getElementById('page2_text');
+            currtext.classList.remove('active_text');
+            currtext.classList.add('hide-text');
+
+
+            const nexttext1 = document.getElementById('page2_text_1');
+            nexttext1.classList.remove('active_text');
+            nexttext1.classList.add('hide-text');
+
+            const nexttext = document.getElementById('page3_text');
+            nexttext.classList.remove('hide-text');
+            nexttext.classList.add('active_text');
+
+        }
+
+        function scrollToNextStep4() {
+    const currentStep = document.querySelector('.step4');
+    currentStep.classList.add('active');
+    currentStep.scrollIntoView({ behavior: 'smooth', block: 'end' });
+
+    document.getElementById('next_btn_3_to_4').style.display = 'none';
+
+
+    const nexttext = document.getElementById('page3_text');
+            nexttext.classList.remove('active_text');
+            nexttext.classList.add('hide-text');
+    const nexttext1 = document.getElementById('submit_text');
+            nexttext1.classList.remove('hide-text');
+            nexttext1.classList.add('active_text');
+
+
+}
+
+        function submitFrom(){
+
+
+            const nexttext = document.getElementById('submit_text');
+            nexttext.classList.remove('active_text');
+            nexttext.classList.add('hide-text');
+
+            
+    const nexttext1 = document.getElementById('final_text');
+            nexttext1.classList.remove('hide-text');
+            nexttext1.classList.add('active_text');
+
+            const topindicator = document.getElementById('cstep3');
+            topindicator.classList.add('stepActive');
+
+        }
+
+
+
+    </script>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    <!-- Side aminated boy -->
+    <div class="boyimage">
+
+    <div class="text_container">
+
+        <a>
+            <div id="page1_text" class="active_text" >
+                <!-- <h6>Select the connection type ,<br> Enter the Consumer ID(s) Then click <br>"ADD This ID" button.</h6> -->
+                <h5>कनेक्शन प्रकार चुनें, <br> उपभोक्ता आईडी दर्ज करें, फिर <br>"Add this ID" बटन पर क्लिक करें।</h5>
+            </div>
+            <div id="page1_text_2" class="hide-text" >
+                <!-- <h6>Now press Next</h6> -->
+                <h5>अब Next दबाएँ</h5>
+            </div>
+            <div id="page2_text" class="hide-text"  >
+                <!-- <h6>Enter Aadhaar Number and Click Send OTP</h6> -->
+                <h5>आधार नंबर दर्ज करें और Send OTP पर क्लिक करें</h5>
+            </div>
+            <div id="page2_text_1" class="hide-text"  >
+                <!-- <h6>Enter OTP Sent To Your Mobile Number then check the terms then click NEXT</h6> -->
+                <h5>अपने मोबाइल नंबर पर भेजे गए ओटीपी को दर्ज करें, फिर शर्तों की जांच करें और फिर Next पर क्लिक करें</h5>
+            </div>
+            <div id="page3_text" class="hide-text"  >
+                <!-- <h6>Verify your details these will Be submitted to your consumer ID Then Click Submit Button</h6> -->
+                <h5>अपना विवरण सत्यापित करें, ये आपकी उपभोक्ता आईडी पर सबमिट किया जाएगा, फिर Next बटन पर क्लिक करें</h5>
+            </div>
+            <div id="submit_text" class="hide-text"  >
+                <!-- <h6>Please read the undertaking carefully and then upload your signature then click submit</h6> -->
+                <h5>कृपया उपक्रम को ध्यान से पढ़ें और फिर अपना हस्ताक्षर अपलोड करें और Submit पर क्लिक करें</h5>
+            </div>
+            <div id="final_text" class="hide-text"  >
+                <!-- <h6>Your Details Have Been Submitted</h6> -->
+                <h5>आपकी याचिका दर्ज कर दी गई है</h5>
+            </div>
+            
+        </a>
+    </div> 
+        <img alt="" src="./vidyut3.png"/>
+    </div>
+
+
+    <script>
+                $(document).ready(function () {
+                    $(".contact-button a").click(function () {
+                        $("html, body").animate({
+                            scrollTop: $("#contact-section").offset().top
+                            }, 800);
+                    });
+                });
+                
+    </script>
+    <style>
+        .boyimage {
+        position: fixed;
+        bottom: 0px; 
+        right: 100px;
+        z-index: 1000; 
+        display: block;
+        max-width: 30px;
+
+    }
+        .boyimage img{
+            height: 180px;
+            margin-left: -30px;
+        }
+
+        .active_text{
+            display: block;
+            font-weight: bolder;
+            
+        }
+        .hide-text{
+            display: none;
+        }
+        .text_container{
+            margin-left: 0px;
+            background-color: white;
+            padding: 10px; 
+            border-radius: 5px;
+            width: 110px;
+        }
+
+    </style>
+
+    </body>
+
+</html>

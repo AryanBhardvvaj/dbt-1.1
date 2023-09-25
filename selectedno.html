@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+</head>
+<body>
+    <style>
+        body{
+            background: url('./bg.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .main{
+            background-color: rgba(242, 249, 254, 0.733);
+            border-radius: 20px;
+            display: block;
+            margin: 20px;
+        }
+        .main h3{
+
+            margin: 56px;
+
+        }
+        .selection{
+            display: flex;
+            margin-left: 200px;
+            justify-content: revert;
+        }
+        .next_button  {
+            --border: 5px;   
+            --slant: 0.7em;   
+            --color: rgb(155, 95, 245);
+
+
+            font-size: 20px;
+            padding: 0.4em 1.2em;
+            border-radius: 5px;
+            border-color: rgb(255, 255, 255);
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 50px;
+            color: var(--color);
+            background:
+                linear-gradient(to bottom left, var(--color) 50%, #0000 50.1%) top right,
+                linear-gradient(to top right, var(--color) 50%, #0000 50.1%) bottom left;
+            background-size: calc(var(--slant) + 1.3 * var(--border)) calc(var(--slant) + 1.3 * var(--border));
+            background-repeat: no-repeat;
+
+            clip-path:
+                polygon(0 0, calc(100% - var(--slant)) 0, 100% var(--slant),
+                        100% 100%, var(--slant) 100%, 0 calc(100% - var(--slant))
+                        );
+            transition: color var(--t, 0.3s), background-size 0.3s;
+
+            background-size: 100% 100%;
+            color: white;
+            --t: 0.5s 0.1s;
+            box-shadow:
+                red 10px inset var(--s, #0000),
+                yellow var(--border) inset var(--color),
+                0 0 10px 5px rgba(55, 232, 252, 0.7); 
+                
+            }
+
+            .next_button:focus-visible {
+            outline-offset: calc(-1*var(--border));
+            outline: var(--border) solid #000c;
+            clip-path: none;
+            background-size: 0 0;
+            }
+
+            .next_button:hover{
+            background-color: white;
+            color: black;
+            --t: 0.5s 0.1s;
+            box-shadow: inset 400px 0 0 0 rgb(71, 214, 249);
+
+            }
+            .next_button:active {
+            background-size: 100% 100%;
+            color: white;
+            --t: 0.5s 0.1s;
+            /* Add glow effect by modifying box-shadow */
+            box-shadow:
+                red 10px inset var(--s, #0000),
+                yellow var(--border) inset var(--color),
+                0 0 10px 5px rgba(55, 232, 252, 0.7);
+            }
+
+            .next_button:active {
+            --s: #0005;
+            transition: none;
+            }
+    </style>
+
+    <div class="main">
+
+        <h3>Thank-you for surrendering the subsidy. Revenue saving will be utilised by GoHP for other development works.</h3>
+
+        
+
+
+    </div>
+
+
+
+     <!-- Side aminated boy -->
+     <div class="boyimage">
+
+        <div class="text_container">
+    
+            <a>
+                <div id="page1_text" class="active_text" >
+                    <!-- <h6>Select the connection type ,<br> Enter the Consumer ID(s) Then click <br>"ADD This ID" button.</h6> -->
+                    <h4>हिमाचल प्रदेश सरकार द्वारा दिए जाने वाली अनुवृति को समर्पण करने क लिए बहुत बहुत धन्यवाद <br> आप के इस योगदान से प्रदेश में बहुत से विकास के कार्य होंगे |</h4>
+                    
+                </div>
+                
+            </a>
+        </div> 
+            <img alt="" src="./vidyut3.png"/>
+        </div>
+    
+    
+        <script>
+                    $(document).ready(function () {
+                        $(".contact-button a").click(function () {
+                            $("html, body").animate({
+                                scrollTop: $("#contact-section").offset().top
+                                }, 800);
+                        });
+                    });
+                    
+        </script>
+        <style>
+            .main{
+                margin: 40px;
+                padding: 10px;
+            }
+            .boyimage {
+            position: fixed;
+            bottom: 0px; 
+            right: 100px;
+            z-index: 1000; 
+            display: block;
+            max-width: 30px;
+            margin-right: 300px;
+    
+        }
+            .boyimage img{
+                height: 220px;
+                margin-left: -30px;
+            }
+    
+            .active_text{
+                display: block;
+                font-weight: bolder;
+                
+            }
+            .hide-text{
+                display: none;
+            }
+            .text_container{
+                margin-left: 0px;
+                margin-right: 40px;
+                background-color: rgba(255, 255, 255, 0.776);
+                padding: 10px; 
+                border-radius: 5px;
+                width: 280px;
+            }
+    
+        </style>
+</body>
+</html>
